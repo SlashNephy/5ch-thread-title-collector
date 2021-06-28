@@ -22,7 +22,7 @@ def get(url, encoding="utf-8"):
 
 
 if __name__ == "__main__":
-    definitions = yaml.load(get("https://raw.githubusercontent.com/SlashNephy/saya/dev/docs/definitions.yml"))
+    definitions = yaml.load(get("https://raw.githubusercontent.com/SlashNephy/saya/dev/docs/definitions.yml"), Loader=yaml.FullLoader)
     keywords = {
         url: list(itertools.chain.from_iterable(
             [
