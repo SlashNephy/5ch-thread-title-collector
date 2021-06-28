@@ -13,7 +13,7 @@ SUBJECT_URLS = [f"https://{v}/subject.txt" for k, v in os.environ.items() if k.s
 
 def get(url, encoding="utf-8"):
     headers = {
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3864.0 Safari/537.36"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.70 Safari/537.36"
     }
     request = urllib.request.Request(url, headers=headers)
 
@@ -45,12 +45,16 @@ if __name__ == "__main__":
                 for line in subject.splitlines():
                     m = thread_title.match(line)
                     if m:
-                        id, title = m.groups()
+                        thread_id, title = m.groups()
                         title = unicodedata.normalize("NFKC", title)
                         if any(x in title for x in keywords[url]):
-                            known_threads[url][id] = title
+                            if thread_id not in known_threads[url]:
+                                known_threads[url][thread_id] = title
+                                print(f"[Known] {title} ({thread_id})")
                         else:
-                            threads[url][id] = title
+                            if thread_id not in threads[url]:
+                                threads[url][thread_id] = title
+                                print(f"[Unknown] {title} ({thread_id})")
 
             with open("result.yml", "w") as f:
                 yaml.dump({
