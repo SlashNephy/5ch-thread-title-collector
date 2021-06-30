@@ -26,7 +26,7 @@ if __name__ == "__main__":
     keywords = {
         url: list(itertools.chain.from_iterable(
             [
-                x["keywords"]
+                [y.lower() for y in x["keywords"]]
                 for x in definitions["boards"]
                 if "keywords" in x and x["server"] + ".5ch.net/" + x["board"] in url
             ]
@@ -47,7 +47,7 @@ if __name__ == "__main__":
                     if m:
                         thread_id, title = m.groups()
                         title = unicodedata.normalize("NFKC", title)
-                        if any(x in title for x in keywords[url]):
+                        if any(x in title.lower() for x in keywords[url]):
                             if thread_id not in known_threads[url]:
                                 known_threads[url][thread_id] = title
                                 print(f"[Known] {title} ({thread_id})")
