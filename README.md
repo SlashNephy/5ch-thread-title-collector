@@ -1,6 +1,6 @@
 # 5ch-thread-title-collector
 
-5ch のスレタイを収集するスクリプトです。[saya の板定義](https://github.com/SlashNephy/saya/blob/dev/docs/definitions.yml) を拡充するために使用しています。
+5ch のスレタイを収集するスクリプトです。[saya の板定義](https://raw.githubusercontent.com/SlashNephy/saya-definitions/master/definitions.yml) を拡充するために使用しています。
 
 ```yml
 version: '3.8'
