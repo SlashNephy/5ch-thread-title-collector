@@ -8,7 +8,7 @@ version: '3.8'
 services:
   collector:
     container_name: 5ch-thread-title-collector
-    image: slashnephy/5ch-thread-title-collector
+    image: ghcr.io/slashnephy/5ch-thread-title-collector:master
     restart: always
     volumes:
       - ./result.yml:/result.yml
