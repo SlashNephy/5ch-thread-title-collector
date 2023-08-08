@@ -1,4 +1,4 @@
-FROM python:3.11.4-slim-bullseye@sha256:52c7a54aa5e5068ce76edaf3f8652a64fb99e378fb89fb0bfbe21a8756d0013c
+FROM python:3.11.4-slim-bullseye@sha256:9943649825523ba1e96787279e5d6450bef73b91d0f1f8eb6649abfa3572ee68
 WORKDIR /
 ENV TZ=Asia/Tokyo
 
